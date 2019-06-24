@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission to Mars!</title>
+  <!-- BOOTSTRAP CSS-->
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="https://bootswatch.com/4/sketchy/bootstrap.min.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('#showTable').html(res);
+      $("table").removeClass("dataframe").addClass("table-primary");
+    });
+  </script>
+
+</head>
+<body>
+  <div class="container card border-danger mb-3">
+    <div class="border-danger mb-3" style="text-align: center"><br>
+      <h1 class="text-danger"><strong>Mission to Mars!</strong></h1><br>
+      <p><a class="btn btn-danger" href="/scrape" role="button">Scrape New Data!</a></p>
+    </div>
+  </div>
+  <div class="container">
+    <h2 class="text-danger">Latest Mars News</h2>
+    <h4 class="text-primary"><strong>{{data.newsTitle}}</strong></h4>
+    <p>{{data.newsPara}}</p>
+  </div>
+  <div class="container">
+      <div class="row">
+          <div class="col">
+              <h2 class="text-danger">Featured Mars Image</h2>
+              <img src="{{data.featuredImage}}" style="height:500px; width:500px;" alt="imgMars">
+          </div>
+          <div class="col">
+            <div class="card text-white bg-danger mb-3" >
+                  <h3 class="card-header"><strong>Current Weather on Mars</strong></h3>
+                  <div class="card-body">
+                    <p class="card-title">{{ data.weatherTweet }}</p>
+                  </div>
+                </div>
+            <div >
+              <h2 class="text-danger">Mars Facts</h2>
+              <div style="text-align:right" id='showTable'></div>
+            </div>
+          </div>
+      </div>
+  </div>
+  <div class="container page-header">
+      <br><br><h2 class="text-danger">Mars Hemispheres</h2>
+     </div>
+<div class="container col-lg-10 offset-lg-1 offset-rg-1">
+
+  <div class="row alert alert-dismissible alert-danger">
+     <div class="col-lg-2 offset-lg-1">
+        <h6 class="text-primary"><strong>{{data.marsHemisphere[0].title}}</strong></h6>
+          <img src="{{data.marsHemisphere[0].img_url}}" style="height:150px; width: 100%;" alt="hemisMars1">
+     </div>
+     <div class="col-lg-2 offset-lg-1">
+        <h6 class="text-primary"><strong>{{data.marsHemisphere[1].title}}</strong></h6>
+          <img src="{{data.marsHemisphere[1].img_url}}" style="height:150px; width: 100%;" alt="hemisMars1">
+      </div>
+      <div class="col-lg-2 offset-lg-1">
+          <h6 class="text-primary"><strong>{{data.marsHemisphere[2].title}}</strong></h6>
+          <img src="{{data.marsHemisphere[2].img_url}}" style="height:150px; width: 100%;" alt="hemisMars1">
+  </div>
+  <div class="col-lg-2 offset-lg-1">
+        <h6 class="text-primary"><strong>{{data.marsHemisphere[3].title}}</strong></h6>
+        <img src="{{data.marsHemisphere[3].img_url}}" style="height:150px; width: 100%;" alt="hemisMars1">
+   </div>
+  </div>
+</div>
+<footer>
+  <p style="text-align:center; margin:5px;">Copyright &copy; 2019</p>
+</footer>
+<!-- BOOTSTRAP JS -->
+<!-- <script src="./templates/js/jquery-3.4.1.min.js"></script>
+<script src="./templates/js/popper.min.js"></script>
+<script src="./templates/js/bootstrap.min.js"></script> -->
+ 
+<script>
+  var str = "{{data.facts}}";
+  var res = str.replace(/&lt;/g, "<");
+  res = res.replace(/&#34;/g,"'");
+  res = res.replace(/&gt;/g, ">");
+</script>
+</body>
+</html>
+
